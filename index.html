@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивный урок: Научный стиль</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Warm Neutrals with Sky Blue Accent -->
+    <!-- Application Structure Plan: Создано одностраничное вертикальное веб-приложение, которое проводит пользователя от общего к частному. Структура: 1. Введение в стили речи (общая информация). 2. Глубокое погружение в научный стиль (ключевые признаки). 3. Сравнение подстилей через интерактивные вкладки. 4. Практический тест для самопроверки. Такая структура превращает пассивное чтение в активный процесс обучения, что более эффективно для усвоения материала. -->
+    <!-- Visualization & Content Choices: 
+        - Информация: Список 5 стилей -> Цель: Информирование -> Метод: Интерактивные карточки -> Взаимодействие: Клик для показа краткого описания. Обоснование: Более увлекательно, чем статический список.
+        - Информация: Ключевые признаки -> Цель: Детализация -> Метод: Аккордеон -> Взаимодействие: Клик для раскрытия. Обоснование: Позволяет дозировать информацию и не перегружать пользователя.
+        - Информация: Таблица подстилей -> Цель: Сравнение -> Метод: Вкладки (табы) -> Взаимодействие: Клик для переключения. Обоснование: Классический UI-элемент для сравнения категорий, удобен на мобильных устройствах.
+        - Информация: Задание -> Цель: Оценка -> Метод: Интерактивный тест с кнопками -> Взаимодействие: Клик для получения мгновенной обратной связи. Обоснование: Активное запоминание и немедленное подкрепление знаний.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .tab-active {
+            border-color: #0284c7;
+            background-color: #f0f9ff;
+            color: #0369a1;
+            font-weight: 600;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #475569;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-5xl p-4 sm:p-6 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900">Научный стиль речи <span class="inline-block">🔬</span></h1>
+            <p class="mt-4 text-lg text-slate-600">Интерактивный гид для учеников 11 класса</p>
+        </header>
+
+        <main>
+            <!-- Section 1: All Speech Styles -->
+            <section id="styles-intro" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-8 text-slate-900">С чего всё начинается: Стили речи</h2>
+                <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">
+                    В русском языке существуют различные стили речи, каждый из которых служит для определённой цели и используется в своей сфере общения. Давайте кратко познакомимся с каждым из них.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="style-card p-4 bg-white rounded-lg shadow-sm border border-slate-200 text-center">
+                        <h3 class="font-bold text-lg text-sky-800">Разговорный</h3>
+                        <p class="text-sm text-slate-600 mt-2">Для неформального общения с друзьями и семьёй.</p>
+                    </div>
+                    <div class="style-card p-4 bg-sky-100 rounded-lg shadow-sm border-2 border-sky-500 text-center ring-4 ring-sky-200">
+                        <h3 class="font-bold text-lg text-sky-800">Научный</h3>
+                        <p class="text-sm text-slate-600 mt-2">Для точной передачи знаний и фактов. Ему и посвящён наш урок.</p>
+                    </div>
+                    <div class="style-card p-4 bg-white rounded-lg shadow-sm border border-slate-200 text-center">
+                        <h3 class="font-bold text-lg text-sky-800">Публицистический</h3>
+                        <p class="text-sm text-slate-600 mt-2">Для воздействия на общественное мнение через СМИ.</p>
+                    </div>
+                    <div class="style-card p-4 bg-white rounded-lg shadow-sm border border-slate-200 text-center">
+                        <h3 class="font-bold text-lg text-sky-800">Официально-деловой</h3>
+                        <p class="text-sm text-slate-600 mt-2">Язык документов, законов и деловой переписки.</p>
+                    </div>
+                    <div class="style-card p-4 bg-white rounded-lg shadow-sm border border-slate-200 text-center">
+                        <h3 class="font-bold text-lg text-sky-800">Художественный</h3>
+                        <p class="text-sm text-slate-600 mt-2">Для создания образов в литературе и искусстве.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Deep Dive into Scientific Style -->
+            <section id="scientific-deep-dive" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Что такое научный стиль?</h2>
+                <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">
+                    Это язык науки, созданный для того, чтобы **точно, логично и объективно** передавать информацию о явлениях и закономерностях природы и общества. Рассмотрим его ключевые признаки.
+                </p>
+                <div id="accordion-container" class="space-y-3 max-w-3xl mx-auto">
+                    <!-- Accordion items will be generated by JS -->
+                </div>
+            </section>
+
+            <!-- Section 3: Substyles -->
+            <section id="substyles" class="mb-16">
+                <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Три лица науки: Подстили</h2>
+                 <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">
+                    Научный стиль не однороден. В зависимости от аудитории и цели, он делится на три основных подстиля. Кликните на вкладки, чтобы узнать о каждом подробнее.
+                </p>
+                <div class="max-w-4xl mx-auto">
+                    <div class="border-b border-slate-300">
+                        <nav id="tabs" class="-mb-px flex space-x-2 sm:space-x-4" aria-label="Tabs">
+                            <!-- Tabs will be generated by JS -->
+                        </nav>
+                    </div>
+                    <div id="tab-content" class="mt-5">
+                        <!-- Tab content will be generated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Practice Quiz -->
+            <section id="practice-quiz">
+                 <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Проверь себя!</h2>
+                 <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">
+                    Прочитайте текст и определите, к какому подстилю научного стиля он относится. Нажмите на один из вариантов ответа, чтобы увидеть результат.
+                </p>
+                <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md border border-slate-200">
+                    <p id="quiz-text" class="text-slate-700 italic mb-6">
+                        "Обобщённая модель развития психики в онтогенезе предполагает, что на первом этапе происходит формирование условно-рефлекторных связей и усложнение поведенческих актов. Этот период, известный как стадия элементарной сенсорной психики, характеризуется преобладанием простейших форм научения. На последующих этапах происходит развитие перцептивной психики, а затем — интеллекта, что позволяет животным и человеку использовать орудия и моделировать среду. Данная периодизация базируется на данных сравнительной психологии и этологии."
+                    </p>
+                    <div id="quiz-options" class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <!-- Quiz options will be generated by JS -->
+                    </div>
+                    <div id="quiz-feedback" class="mt-6 p-4 rounded-md text-center hidden"></div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="text-center mt-16 py-6 border-t border-slate-200">
+            <p class="text-sm text-slate-500">Интерактивный урок, 2025</p>
+        </footer>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Data ---
+    const accordionData = [
+        { title: 'Терминология', content: 'Использование специальных слов и понятий, характерных для конкретной научной области (например, <i>интерференция, ассимиляция, квант</i>).' },
+        { title: 'Строгая логика', content: 'Все части текста последовательны, взаимосвязаны и вытекают одна из другой. Мысли излагаются по чёткому плану.' },
+        { title: 'Объективность', content: 'Изложение ведётся от третьего лица, автор не выражает личных оценок и эмоций. Главное — факты.' },
+        { title: 'Точность и однозначность', content: 'Каждое слово и выражение имеет чёткое, строго определённое значение, чтобы избежать двусмысленности.' },
+        { title: 'Обобщённость', content: 'Внимание сосредоточено на общих, типичных признаках явлений, а не на единичных, конкретных случаях.' }
+    ];
+
+    const tabData = [
+        { 
+            id: 'proper-scientific',
+            title: 'Собственно-научный', 
+            audience: '<strong>Специалисты</strong> в конкретной области.',
+            usage: 'Монографии, диссертации, научные статьи, доклады.',
+            example: '"Определённое состояние электрона в атоме описывается с помощью набора из четырёх квантовых чисел."',
+            isDefault: true
+        },
+        { 
+            id: 'educational',
+            title: 'Научно-учебный', 
+            audience: '<strong>Учащиеся, студенты, преподаватели.</strong>',
+            usage: 'Учебники, лекции, методические пособия.',
+            example: '"Квантовые числа — это значения, которые характеризуют свойства электрона в атоме."',
+            isDefault: false
+        },
+        { 
+            id: 'popular-science',
+            title: 'Научно-популярный', 
+            audience: '<strong>Широкая аудитория</strong>, интересующаяся наукой.',
+            usage: 'Научно-популярные журналы, документальные фильмы, блоги.',
+            example: '"Квантовый мир полон загадок! Представьте, что у электрона есть свой «адрес» в атоме, который определяется четырьмя таинственными числами."',
+            isDefault: false
+        }
+    ];
+
+    const quizData = {
+        options: ['Собственно-научный', 'Научно-учебный', 'Научно-популярный'],
+        correctAnswer: 'Собственно-научный',
+        feedback: {
+            correct: '<strong>Верно!</strong> Этот текст относится к собственно-научному подстилю. Он содержит большое количество узкоспециализированных терминов (<i>онтогенез, условно-рефлекторные связи, сенсорная психика, перцептивная психика, этология</i>) и предназначен для специалистов в области психологии или биологии.',
+            incorrect: '<strong>Не совсем так, попробуйте ещё раз.</strong> Обратите внимание на обилие сложной терминологии. Понятен ли этот текст человеку без специальной подготовки?'
+        }
+    };
+
+    // --- Accordion Logic ---
+    const accordionContainer = document.getElementById('accordion-container');
+    accordionData.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'border border-slate-200 rounded-lg bg-white';
+        div.innerHTML = `
+            <button class="accordion-toggle w-full flex justify-between items-center p-4 text-left font-semibold text-slate-700 hover:bg-slate-50">
+                <span>${item.title}</span>
+                <span class="transform transition-transform duration-300">▼</span>
+            </button>
+            <div class="accordion-content px-4 pb-4 text-slate-600">
+                <p>${item.content}</p>
+            </div>
+        `;
+        accordionContainer.appendChild(div);
+    });
+    
+    accordionContainer.addEventListener('click', (e) => {
+        const toggle = e.target.closest('.accordion-toggle');
+        if (toggle) {
+            const content = toggle.nextElementSibling;
+            const icon = toggle.querySelector('span:last-child');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-content').forEach(c => {
+                if (c !== content) {
+                    c.style.maxHeight = null;
+                    c.previousElementSibling.querySelector('span:last-child').style.transform = 'rotate(0deg)';
+                }
+            });
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    });
+
+    // --- Tabs Logic ---
+    const tabsContainer = document.getElementById('tabs');
+    const tabContentContainer = document.getElementById('tab-content');
+
+    tabData.forEach(tab => {
+        // Create tab button
+        const button = document.createElement('button');
+        button.className = `tab-button whitespace-nowrap py-3 px-1 border-b-2 text-sm sm:text-base sm:px-4 ${tab.isDefault ? 'tab-active' : 'tab-inactive'}`;
+        button.textContent = tab.title;
+        button.dataset.tabId = tab.id;
+        tabsContainer.appendChild(button);
+
+        // Create tab content panel
+        const panel = document.createElement('div');
+        panel.id = tab.id;
+        panel.className = `tab-panel p-5 bg-white rounded-lg shadow-sm border border-slate-200 ${tab.isDefault ? '' : 'hidden'}`;
+        panel.innerHTML = `
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-semibold text-sky-800">Аудитория:</dt>
+                    <dd class="text-slate-600 pl-4">${tab.audience}</dd>
+                </div>
+                <div>
+                    <dt class="font-semibold text-sky-800">Где используется:</dt>
+                    <dd class="text-slate-600 pl-4">${tab.usage}</dd>
+                </div>
+                <div>
+                    <dt class="font-semibold text-sky-800">Пример:</dt>
+                    <dd class="text-slate-700 pl-4 italic bg-slate-50 p-3 rounded-md">"${tab.example}"</dd>
+                </div>
+            </dl>
+        `;
+        tabContentContainer.appendChild(panel);
+    });
+
+    tabsContainer.addEventListener('click', (e) => {
+        const clickedTab = e.target.closest('.tab-button');
+        if (!clickedTab) return;
+
+        // Deactivate all tabs
+        document.querySelectorAll('.tab-button').forEach(btn => {
+            btn.classList.remove('tab-active');
+            btn.classList.add('tab-inactive');
+        });
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+            panel.classList.add('hidden');
+        });
+
+        // Activate clicked tab
+        clickedTab.classList.add('tab-active');
+        clickedTab.classList.remove('tab-inactive');
+        document.getElementById(clickedTab.dataset.tabId).classList.remove('hidden');
+    });
+
+    // --- Quiz Logic ---
+    const quizOptionsContainer = document.getElementById('quiz-options');
+    const quizFeedbackContainer = document.getElementById('quiz-feedback');
+
+    quizData.options.forEach(optionText => {
+        const button = document.createElement('button');
+        button.className = 'quiz-option-btn w-full sm:w-auto flex-1 bg-sky-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-700 transition-colors duration-200';
+        button.textContent = optionText;
+        quizOptionsContainer.appendChild(button);
+    });
+
+    quizOptionsContainer.addEventListener('click', (e) => {
+        const clickedButton = e.target.closest('.quiz-option-btn');
+        if (!clickedButton) return;
+        
+        const isCorrect = clickedButton.textContent === quizData.correctAnswer;
+        
+        quizFeedbackContainer.innerHTML = isCorrect ? quizData.feedback.correct : quizData.feedback.incorrect;
+        
+        quizFeedbackContainer.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-amber-100', 'text-amber-800');
+
+        if (isCorrect) {
+            quizFeedbackContainer.classList.add('bg-green-100', 'text-green-800');
+        } else {
+            quizFeedbackContainer.classList.add('bg-amber-100', 'text-amber-800');
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
